@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US"><head><!-- Created by Artisteer v4.1.0.59861 -->
+    <meta charset="utf-8">
+    <title>AGUA</title>
+    <meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no, width = device-width">
+
+    <!--[if lt IE 9]><script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <link rel="stylesheet" href="style.css" media="screen">
+    <!--[if lte IE 7]><link rel="stylesheet" href="style.ie7.css" media="screen" /><![endif]-->
+    <link rel="stylesheet" href="style.responsive.css" media="all">
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/qunit/qunit-1.11.0.css">
+	
+    <script type="text/javascript" src="http://code.jquery.com/qunit/qunit-1.11.0.js"></script>
+
+    <script src="jquery.js"></script>
+    <script src="script.js"></script>
+    <script src="script.responsive.js"></script>
+	<script type="text/javascript" src="http://r.office.microsoft.com/r/rlidExcelWLJS?v=1&kip=1"></script>
+	
+	<script lenguge="javascript">
+	function indicadores()
+	{    
+		var contador=0;
+		var ahorro=0;
+		var porcentaje=0;
+		var valor1=0;
+		var valor2=0;
+		var ahorroAcum=0;
+		var porcentajeAcum=0;
+		var acumAño1=0;
+		var acumAño2=0;
+		var aux=1;
+		var totalAño1=0;
+		var totalAño2=0;
+		var totalAhorro=0;
+		var mensaje1="El resultado supero la meta propuesta, se debe continuar con las actividades realizadas";
+		var mensaje2="No hubo cambio, se deben realizar mejoras en las actividades realizadas";
+		var mensaje3="El resultado no supero la meta propuesta, se debe replantear las actividades propuestas";
+		
+		
+	 	for(var i=2; i<document.getElementById('TablaIndicador').rows.length-1;i++)
+			{
+			 	valor1=parseInt(document.getElementById('TablaIndicador').rows[i].cells[1].innerHTML);
+				valor2=parseInt(document.getElementById('TablaIndicador').rows[i].cells[2].innerHTML);
+				
+				ahorro=valor1-valor2;
+				porcentaje=(ahorro/valor1)*100;
+				ahorroAcum=ahorroAcum + ahorro;
+				
+				porcentajeAcum=porcentajeAcum + porcentaje;
+				acumAño1=acumAño1+valor1;
+				acumAño2=acumAño2+valor2;
+				
+				document.getElementById('TablaIndicador').rows[i].cells[3].innerHTML=ahorro;
+				document.getElementById('TablaIndicador').rows[i].cells[4].innerHTML=Math.round(porcentaje) + " %";
+				
+				contador=contador+1;
+			 	if(contador>2)
+				{
+				 i=i+1;
+				 document.getElementById('TablaIndicador').rows[i].cells[1].innerHTML=acumAño1;
+				 document.getElementById('TablaIndicador').rows[i].cells[2].innerHTML=acumAño2;
+				 document.getElementById('TablaIndicador').rows[i].cells[3].innerHTML=ahorroAcum;
+				 document.getElementById('TablaIndicador').rows[i].cells[4].innerHTML=Math.round((ahorroAcum/acumAño1)*100)+ " %";
+				 
+				 document.getElementById('ResultadoIndicador').rows[aux].cells[1].innerHTML=Math.round((ahorroAcum/acumAño1)*100)+ " %";
+				 
+				  if(Math.round((ahorroAcum/acumAño1)*100)>=10){
+				  document.getElementById('Acciones').rows[aux-1].cells[1].innerHTML=mensaje1;
+				 }
+				  if(Math.round((ahorroAcum/acumAño1)*100)<10){
+				  document.getElementById('Acciones').rows[aux-1].cells[1].innerHTML=mensaje3;
+				 }
+				 if(Math.round((ahorroAcum/acumAño1)*100)==0){
+				  document.getElementById('Acciones').rows[aux-1].cells[1].innerHTML=mensaje2;
+				 }
+				 totalAño1=totalAño1+acumAño1;
+				 totalAño2=totalAño2+acumAño2;
+				 totalAhorro=totalAhorro+ahorroAcum;
+				 
+			 	 contador=0;
+				 ahorroAcum=0;
+				 porcentajeAcum=0;
+				 acumAño1=0;
+				 acumAño2=0;
+				 aux=aux+1;
+				 
+				}
+				ahorro = 0;
+				porcentaje=0;
+			}
+		document.getElementById('TablaIndicador').rows[10].cells[1].innerHTML=totalAño1;
+	    document.getElementById('TablaIndicador').rows[10].cells[2].innerHTML=totalAño2;
+		document.getElementById('TablaIndicador').rows[10].cells[3].innerHTML=totalAhorro;
+		document.getElementById('TablaIndicador').rows[10].cells[4].innerHTML=Math.round((totalAhorro/totalAño1)*100)+ " %";
+		
+		document.all.item("report").style.visibility='visible';	
+	}
+	function graficar2()
+	{
+	    var contador=0;
+		var valor1=0;
+		var valor2=0;
+		var posx=1;
+		
+		for(var i=2; i<document.getElementById('TablaIndicador').rows.length-1;i++)
+		{
+			valor2=parseInt(document.getElementById('TablaIndicador').rows[i].cells[2].innerHTML);
+			
+			contador=contador+1;
+			
+		    if(contador>2)
+			{
+			  i=i+1;
+			  contador=0;
+			}
+			
+			dibujarPuntoRojo(valor2/100,posx);
+			posx=posx+1;
+		}
+	}
+	function graficar1()
+	{
+	    var contador=0;
+		var valor1=0;
+		var valor2=0;
+		var posx=1;
+		
+		for(var i=2; i<document.getElementById('TablaIndicador').rows.length-1;i++)
+		{
+		    valor1=parseInt(document.getElementById('TablaIndicador').rows[i].cells[1].innerHTML);
+			contador=contador+1;
+			
+		    if(contador>2)
+			{
+			  i=i+1;
+			  contador=0;
+			}
+			dibujarPuntoAzul(valor1/100,posx);
+			posx=posx+1;
+		}
+	}
+	
+	function getPosX( inicio )
+		  {   
+		      var resultado=20 +  ( inicio * 70 );
+		      return resultado;
+			  
+		  }
+    
+	module( "Test getPosX" ); 
+	test("Test1",function () {
+    ok(!checkNumber(getPosX(5)),"Satisfactorio");
+    });  
+		
+	function getPosY( idProceso )
+		  {
+		      var resultado= 138 - ( (idProceso-3) * 10 );
+		      return resultado;
+	      }
+	module( "Test getPosY" ); 
+	test("Test2",function () {
+    ok(!checkNumber(getPosY(20)),"Satisfactorio");
+    });  
+	function dibujarEjes()
+          {
+		   		   var graficaSFJ   = document.getElementById ( "graficaSJF" );
+				   var contexto     = graficaSFJ.getContext   ( "2d" );
+				   var drawing      = new Image(); 
+				   drawing.src      = "images/graficaagua.jpg"; 
+				   contexto.drawImage(drawing, 0, 0, 563, 239);
+		  }
+	function dibujarPuntoRojo(y, x)
+		  {		   
+		  		  var graficaSJF   = document.getElementById ( "graficaSJF" );
+				  var contexto  = graficaSJF.getContext   ( "2d" );
+				  
+				  var posX1 = getPosX ( x );
+				  var posY  = getPosY ( y );
+				  
+				  contexto.beginPath();
+		  		  contexto.arc(posX1,posY,3,0,2*Math.PI);
+				  contexto.fillStyle="red";
+				  contexto.fill();
+				  contexto.stroke();
+		  }
+	function dibujarPuntoAzul(y, x)
+		  {		   
+		  		  var graficaSJF   = document.getElementById ( "graficaSJF" );
+				  var contexto  = graficaSJF.getContext   ( "2d" );
+				  
+				  var posX1 = getPosX ( x );
+				  var posY  = getPosY ( y );
+				  
+				  contexto.beginPath();
+		  		  contexto.arc(posX1,posY,3,0,2*Math.PI);
+				  contexto.fillStyle="blue";
+				  contexto.fill();
+				  contexto.stroke();
+		  }
+		  
+	function checkNumber(numero){
+       		 return isNaN(numero);
+         }
+	function imprimirGrafica() {
+	      document.all.item("art-main").style.visibility='hidden';
+		  document.all.item("qunit").style.visibility='hidden';
+		  document.all.item("qunit-fixture").style.visibility='hidden';
+		  document.all.item("g1").style.visibility='hidden';
+		  document.all.item("g2").style.visibility='hidden';
+		  document.all.item("imp").style.visibility='hidden';
+		  
+		  document.all.item("grafica").style.visibility='visible';
+		  
+          window.print();
+		  
+		  document.all.item("g1").style.visibility='visible';
+		  document.all.item("g2").style.visibility='visible';
+		  document.all.item("imp").style.visibility='visible';
+		  document.all.item("art-main").style.visibility='visible';
+		  document.all.item("qunit").style.visibility='visible';
+		  document.all.item("qunit-fixture").style.visibility='visible';
+            }
+	function generarReporte(){
+		 
+		 document.all.item("cargando").style.visibility='visible';
+		 	 
+	     var data_type = 'data:application/ms-excel';
+  		 var a = document.createElement('a');
+  		 
+		 
+  		 var table_div = document.getElementById('TablaIndicador')
+  		 var table_html = table_div.outerHTML.replace(/ /g, '%20');
+		 
+		 var table_div1 = document.getElementById('ResultadoIndicador')
+  		 var table_html1 = table_div1.outerHTML.replace(/ /g, '%20');
+		 
+		 var table_div2 = document.getElementById('Acciones')
+  		 var table_html2 = table_div2.outerHTML.replace(/ /g, '%20');
+		 
+		
+  		 a.href = data_type+ ', '+escape('INFORME DE ACCIONES A TOMAR SEGUN EVALUACION')+ table_html+ escape('---------------------------')+ table_html1+ escape('---------- ACCIONES REQUERIDAS ----------')+ table_html2;
+  		 //setting the file name 
+  		 a.download = 'ReporteAgua.xls';
+  		 //triggering the function
+  		 a.click();   
+		}
+	</script>
+
+
+</head>
+<body body onload="dibujarEjes()">
+<div id="art-main">
+<div id="qunit"></div>
+<div id="qunit-fixture"></div> 
+
+<header class="art-header">
+
+
+    <div class="art-shapes">
+<div class="art-object533944259" data-left="100%"></div>
+<div class="art-object1798544311" data-left="0%"><a href="http://www.homecenter.com.co/homecenter-co/"><img src="images/object1798544311.png"></a> </div>
+
+            </div>
+<h1 class="art-headline" data-left="0%">
+    <a href="#">HC RESPONSABLE</a>
+</h1>
+<h2 class="art-slogan" data-left="0%">Cuidando al mundo, cuidando tu hogar, por que todo comienza en casa</h2>
+
+
+
+
+<nav class="art-nav">
+    <div class="art-nav-inner">
+    <ul class="art-hmenu"><li><a href="inicio.html" class="">Inicio</a></li></ul> 
+        </div>
+    </nav>
+
+                    
+</header>
+<div class="art-sheet clearfix">
+            <div class="art-layout-wrapper">
+                <div class="art-content-layout">
+                    <div class="art-content-layout-row">
+                        <div class="art-layout-cell art-content"><article class="art-post art-article">
+                                <h2 class="art-postheader">AGUA</h2>
+                                                
+                <div class="art-postcontent art-postcontent-0 clearfix"><div class="art-content-layout">
+    <div class="art-content-layout-row">
+    <div class="art-layout-cell" style="width: 50%" >
+	<p>&nbsp;</p>
+	<p style="text-align: center;">TABLA DE ANALISIS EN CONSUMO DE AGUA POTABLE</p>
+	
+       <table align="center" border="1" cellpadding="1" cellspacing="1" id="TablaIndicador" style="width:500px;">
+	<tbody>
+		<tr>
+			<td style="text-align: center; border-color: rgb(51, 153, 51);"><strong>MESES</strong></td>
+			<td colspan="2" style="text-align: center; border-color: rgb(51, 153, 51);"><strong>A&Ntilde;O</strong></td>
+			<td colspan="2" style="text-align: center; border-color: rgb(51, 153, 51);"><strong>AHORRO</strong></td>
+		</tr>
+		<tr>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+			<td style="border-color: rgb(51, 153, 51);"><strong>2014</strong></td>
+			<td style="border-color: rgb(51, 153, 51);"><strong>2015</strong></td>
+			<td style="border-color: rgb(51, 153, 51);"><b>m3</b></td>
+			<td style="border-color: rgb(51, 153, 51);"><strong>PORCENTAJE (%)</strong></td>
+		</tr>
+		<tr>
+			<td style="border-color: rgb(51, 153, 51);">DICIEMBRE - ENERO</td>
+			<td style="border-color: rgb(51, 153, 51);">856</td>
+			<td style="border-color: rgb(51, 153, 51);">261</td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="border-color: rgb(51, 153, 51);">FEBRERO - MARZO</td>
+			<td style="border-color: rgb(51, 153, 51);">355</td>
+			<td style="border-color: rgb(51, 153, 51);">215</td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="border-color: rgb(51, 153, 51);">ABRIL - MAYO</td>
+			<td style="border-color: rgb(51, 153, 51);">207</td>
+			<td style="border-color: rgb(51, 153, 51);">538</td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="border-color: rgb(51, 153, 51);"><strong>SEMESTRE I</strong></td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="border-color: rgb(51, 153, 51);">JUNIO - JULIO</td>
+			<td style="border-color: rgb(51, 153, 51);">340</td>
+			<td style="border-color: rgb(51, 153, 51);">533</td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="border-color: rgb(51, 153, 51);">AGOSTO - SEPTIEMBRE</td>
+			<td style="border-color: rgb(51, 153, 51);">405</td>
+			<td style="border-color: rgb(51, 153, 51);">300</td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="border-color: rgb(51, 153, 51);">OCTUBRE - NOVIEMBRE</td>
+			<td style="border-color: rgb(51, 153, 51);">317</td>
+			<td style="border-color: rgb(51, 153, 51);">420</td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="border-color: rgb(51, 153, 51);"><strong>SEMESTRE II</strong></td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="border-color: rgb(51, 153, 51);"><strong>TOTAL</strong></td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+			<td style="border-color: rgb(51, 153, 51);">&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+<p>&nbsp;</p>
+<p style="text-align: center;">META:</p>
+<p style="text-align: center;">Lograr tasas de ahorro de consumo de agua potable en 10% con respecto a los semestres del año inmediatamente anterior</p>
+<p>&nbsp;</p>
+
+<table align="center" border="1" cellpadding="1" cellspacing="1" dir="ltr" id="ResultadoIndicador" style="width:500px;">
+	<tbody>
+		<tr>
+			<td colspan="2" style="text-align: center; border-color: rgb(51, 153, 51);"><strong>RESULTADO INDICADOR</strong></td>
+		</tr>
+		<tr>
+			<td style="white-space: nowrap; text-align: center; vertical-align: middle; border-color: rgb(51, 153, 51);">ANALISIS SEMESTRE I</td>
+			<td style="white-space: nowrap; text-align: center; vertical-align: middle; border-color: rgb(51, 153, 51);">0</td>
+		</tr>
+		<tr>
+			<td style="white-space: nowrap; text-align: center; vertical-align: middle; border-color: rgb(51, 153, 51);">ANALISIS SEMESTRE II</td>
+			<td style="white-space: nowrap; text-align: center; vertical-align: middle; border-color: rgb(51, 153, 51);">0</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="text-align: center;"><a onclick="indicadores();" class="art-button">Evaluar</a></p><p style="text-align: right; visibility:hidden;" id="report" ><a onclick="generarReporte();" class="art-button">Generar Reporte</a></p>  
+<p>&nbsp;</p>
+
+		
+    </div><div id=grafica class="art-layout-cell" style="width: 35%" >
+	   
+	   <p>&nbsp;</p>
+	   <p>&nbsp;</p>
+	   <p style="text-align: center;"><canvas id="graficaSJF" width="563" height="239"><IMG src="images/graficaagua.jpg" width="800" height="320"></canvas></p> 
+	   <p style="text-align: left;" id="imp"><img name="imagen1"src="images/postprinticon.png" onClick="imprimirGrafica()"></p>  
+       <p style="text-align: right;" id="g1"><a onclick="graficar1();" class="art-button">Grafica1</a></p> 
+	   <p style="text-align: right;" id="g2"><a onclick="graficar2();" class="art-button">Grafica2</a></p>
+	 
+	 
+<table border="1" cellpadding="1" cellspacing="1" id="Acciones" style="width:500px; visibility:hidden;">
+	<tbody>
+		<tr>
+			<td>SEMESTRE I</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>SEMESTRE II</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+			<p style="text-align: right;visibility:hidden;" id="cargando">Se descargo el reporte....</p>
+    </div>
+    </div>
+</div>
+<div class="art-content-layout">
+    <div class="art-content-layout-row">
+    <div class="art-layout-cell" style="width: 100%" >
+	
+        <p><br /></p>
+		
+    </div>
+    </div>
+</div>
+</div>
+                                
+                
+
+</article></div>
+                    </div>
+                </div>
+            </div>
+    </div>
+<footer class="art-footer">
+  <div class="art-footer-inner">
+<div class="art-content-layout">
+    <div class="art-content-layout-row">
+    <div class="art-layout-cell layout-item-0" style="width: 20%">
+        <p style="font: 22px 'Arial Narrow';"><a href="contacto.html" style="font-size: 20px;">CONTACTENOS</a><span style="font-size: 20px;"><a href="/contactenos"></a></span><span style="color: rgb(115, 127, 5); font-size: 28px;"></span></p><div style="margin-left: 2em"></div>
+    </div><div class="art-layout-cell layout-item-0" style="width: 20%">
+        <div style="margin-left: 2em"></div>
+    </div><div class="art-layout-cell layout-item-0" style="width: 24%">
+        <p style="font: 22px 'Arial Narrow';"><br></p><div style="margin-left: 2em"></div>
+    </div><div class="art-layout-cell layout-item-0" style="width: 36%">
+        <p style="text-align: right;"><a href="https://twitter.com/Homecenter_co"><img width="32" height="32" alt="" src="images/twitter_32.png" class=""></a><a href="https://www.facebook.com/homecentercolombia"><img width="32" height="32" alt="" src="images/facebook_32-2.png" style="margin-right: 5px;" class=""></a></p><p style="text-align: right;">Siguenos en nuestras redes sociales</p>
+    </div>
+    </div>
+</div>
+
+    <p class="art-page-footer">
+        <span id="art-footnote-links">Designed by HCResponsable .</span>
+    </p>
+  </div>
+</footer>
+
+</div>
+
+
+</body></html>

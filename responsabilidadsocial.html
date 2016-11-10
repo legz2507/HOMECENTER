@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US"><head><!-- Created by Artisteer v4.1.0.59861 -->
+    <meta charset="utf-8">
+    <title>RESPONSABILIDAD SOCIAL</title>
+    <meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no, width = device-width">
+
+    <!--[if lt IE 9]><script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <link rel="stylesheet" href="style.css" media="screen">
+    <!--[if lte IE 7]><link rel="stylesheet" href="style.ie7.css" media="screen" /><![endif]-->
+    <link rel="stylesheet" href="style.responsive.css" media="all">
+
+
+    <script src="jquery.js"></script>
+    <script src="script.js"></script>
+    <script src="script.responsive.js"></script>
+
+
+<script>jQuery(function($) {
+    'use strict';
+    if ($.fn.slider) {
+        $(".art-slidecontainertecho").each(function () {
+            var slideContainer = $(this), tmp;
+            var inner = $(".art-slider-inner", slideContainer);
+            var helper = null;
+
+            if ($.support.transition) {
+                helper = new BackgroundHelper();
+                helper.init("fade", "next", $(".art-slide-item", inner).first().css($.support.transition.prefix + "transition-duration"));
+                inner.children().each(function () {
+                    helper.processSlide($(this));
+                });
+
+            }
+
+
+            inner.children().eq(0).addClass("active");
+            slideContainer.slider({
+                pause: 2600,
+                speed: 600,
+                repeat: true,
+                animation: "fade",
+                direction: "next",
+                navigator: slideContainer.siblings(".art-slidenavigatortecho"),
+                helper: helper                
+            });
+        });
+    }
+});
+</script><style>.art-content .art-postcontent-0 .layout-item-0 { margin-bottom: 5px;  }
+.art-content .art-postcontent-0 .layout-item-1 { border-spacing: 10px 0px; border-collapse: separate;  }
+.art-content .art-postcontent-0 .layout-item-2 { border-top-style:dashed;border-right-style:dashed;border-bottom-style:dashed;border-left-style:dashed;border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;border-top-color:#4A691C;border-right-color:#4A691C;border-bottom-color:#4A691C;border-left-color:#4A691C; padding-right: 10px;padding-left: 10px;  }
+.art-content .art-postcontent-0 .layout-item-3 { border-top-style:dashed;border-right-style:dashed;border-bottom-style:dashed;border-left-style:dashed;border-width:6px;border-top-color:#4A691C;border-right-color:#4A691C;border-bottom-color:#4A691C;border-left-color:#4A691C; color: #6C9929; background: #FFFFFF; padding-right: 10px;padding-left: 10px;  }
+.art-content .art-postcontent-0 .layout-item-4 { border-top-style:dashed;border-right-style:dashed;border-bottom-style:dashed;border-left-style:dashed;border-width:6px;border-top-color:#4A691C;border-right-color:#4A691C;border-bottom-color:#4A691C;border-left-color:#4A691C; color: #6C9929; background: #FFFFFF; padding-right: 10px;padding-left: 10px; vertical-align: middle;  }
+.art-content .art-postcontent-0 .layout-item-5 { border-top-style:dashed;border-right-style:dashed;border-bottom-style:dashed;border-left-style:dashed;border-width:0px;border-top-color:#4A691C;border-right-color:#4A691C;border-bottom-color:#4A691C;border-left-color:#4A691C; border-spacing: 10px 0px; border-collapse: separate;  }
+.art-content .art-postcontent-0 .layout-item-6 { color: #FFFFFF; background: ; padding-right: 10px;padding-left: 10px; vertical-align: middle;  }
+.ie7 .art-post .art-layout-cell {border:none !important; padding:0 !important; }
+.ie6 .art-post .art-layout-cell {border:none !important; padding:0 !important; }
+
+.art-slidecontainertecho {
+    position: relative;
+        width: 700px;
+    height: 500px;
+        }
+
+.art-slidecontainertecho .art-slide-item
+{
+
+}
+
+
+
+.art-slidecontainertecho .art-slide-item {
+    -webkit-transition: 600ms ease-in-out opacity;
+    -moz-transition: 600ms ease-in-out opacity;
+    -ms-transition: 600ms ease-in-out opacity;
+    -o-transition: 600ms ease-in-out opacity;
+    transition: 600ms ease-in-out opacity;
+    position: absolute;
+    display: none;
+	left: 0;
+	top: 0;
+	opacity: 0;
+    width:  100%;
+    height: 100%;
+}
+
+.art-slidecontainertecho .active, .art-slidecontainertecho .next, .art-slidecontainertecho .prev {
+    display: block;
+}
+
+.art-slidecontainertecho .active {
+    opacity: 1;
+}
+
+.art-slidecontainertecho .next, .art-slidecontainertecho .prev {
+    width: 100%;
+}
+
+.art-slidecontainertecho .next.forward, .art-slidecontainertecho .prev.back {
+    opacity: 1;
+}
+
+.art-slidecontainertecho .active.forward {
+    opacity: 0;
+}
+
+.art-slidecontainertecho .active.back {
+    opacity: 0;
+}
+
+
+.art-slidetecho0 {
+    background-image:  url('images/slidetecho0.jpg');
+        background-size:  100%;
+        background-position:  0 0;
+    background-repeat: no-repeat;
+}
+.art-slidetecho1 {
+    background-image: url('images/slidetecho1-object617841064.png'),  url('images/slidetecho1.jpg');
+        background-size: 91% 92.8%,  100%;
+        background-position: 32px 18px,  0 0;
+    background-repeat: no-repeat;
+}
+
+
+.art-slidenavigatortecho {
+  display: inline-block;
+  position: absolute;
+  direction: ltr !important;
+  top: 476px;
+  left: 93.71%;
+  z-index: 101;
+  line-height: 0 !important;
+  -webkit-background-origin: border !important;
+  -moz-background-origin: border !important;
+  background-origin: border-box !important;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: center;
+    white-space: nowrap;
+    }
+.art-slidenavigatortecho
+{
+background: #B9E675;background: linear-gradient(top, rgba(218, 242, 181, 0.6) 0, rgba(150, 218, 47, 0.6) 100%) no-repeat;background: -webkit-linear-gradient(top, rgba(218, 242, 181, 0.6) 0, rgba(150, 218, 47, 0.6) 100%) no-repeat;background: -moz-linear-gradient(top, rgba(218, 242, 181, 0.6) 0, rgba(150, 218, 47, 0.6) 100%) no-repeat;background: -o-linear-gradient(top, rgba(218, 242, 181, 0.6) 0, rgba(150, 218, 47, 0.6) 100%) no-repeat;background: -ms-linear-gradient(top, rgba(218, 242, 181, 0.6) 0, rgba(150, 218, 47, 0.6) 100%) no-repeat;background: linear-gradient(top, rgba(218, 242, 181, 0.6) 0, rgba(150, 218, 47, 0.6) 100%) no-repeat;-svg-background: linear-gradient(top, rgba(218, 242, 181, 0.6) 0, rgba(150, 218, 47, 0.6) 100%) no-repeat;
+-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;
+
+
+padding:7px;
+
+
+
+
+
+}
+.art-slidenavigatortecho > a
+{
+background: #70A71E;
+-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;
+
+
+
+margin:0 10px 0 0;
+
+width: 10px;
+
+height: 10px;
+}
+.art-slidenavigatortecho > a.active
+{
+background: #B9E675;
+-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;
+
+
+
+margin:0 10px 0 0;
+
+width: 10px;
+
+height: 10px;
+}
+.art-slidenavigatortecho > a:hover
+{
+background: #70A71E;
+-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;
+
+
+
+margin:0 10px 0 0;
+
+width: 10px;
+
+height: 10px;
+}
+
+</style></head>
+<body>
+<div id="art-main">
+<header class="art-header">
+
+
+    <div class="art-shapes">
+<div class="art-object533944259" data-left="100%"></div>
+<div class="art-object1798544311" data-left="0%"><a href="http://www.homecenter.com.co/homecenter-co/"><img src="images/object1798544311.png"></a> </div>
+
+            </div>
+<h1 class="art-headline" data-left="0%">
+    <a href="#">HC RESPONSABLE</a>
+</h1>
+<h2 class="art-slogan" data-left="0%">Cuidando al mundo, cuidando tu hogar, por que todo comienza en casa</h2>
+
+
+
+
+<nav class="art-nav">
+    <div class="art-nav-inner">
+    <ul class="art-hmenu"><li><a href="inicio.html" class="">Inicio</a></li></ul> 
+        </div>
+    </nav>
+
+                    
+</header>
+<div class="art-sheet clearfix">
+            <div class="art-layout-wrapper">
+                <div class="art-content-layout">
+                    <div class="art-content-layout-row">
+                        <div class="art-layout-cell art-content"><article class="art-post art-article">
+                                <h2 class="art-postheader">RESPONSABILIDAD SOCIAL</h2>
+                                                
+                <div class="art-postcontent art-postcontent-0 clearfix"><div class="art-content-layout-wrapper layout-item-0">
+<div class="art-content-layout layout-item-1">
+    <div class="art-content-layout-row">
+    <div class="art-layout-cell layout-item-2" style="width: 100%" >
+        <p><span style="font-size: 16px;">Desarrollamos e implementamos programas sociales de alto impacto que generar un valor agregado a lso grupos de interes con los que interactua la compañia.Mas alla del estricto cumplimiento de la ley buscamos garantizar un equilibrio entre lo flantropico y lo economico, ademas de la sonteibilidad, vinculacion y sensibilizacion de nuestros empleados y el reconocimiento por parte de nuetrros alumnos.</span></p>
+    </div>
+    </div>
+</div>
+</div>
+<div class="art-content-layout-wrapper layout-item-0">
+<div class="art-content-layout layout-item-1">
+    <div class="art-content-layout-row">
+    <div class="art-layout-cell layout-item-2" style="width: 50%" >
+        <div style="border-bottom-style: solid; border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1pt; padding-top: 0cm; padding-right: 0cm; padding-bottom: 4pt; padding-left: 0cm;">
+         
+        <p class="MsoNormal" style="margin-bottom: 7.5pt; padding-top: 0cm; padding-right: 0cm; padding-bottom: 0cm; padding-left: 0cm;"><a href="http://www.iso.org/iso/iso_26000_project_overview-es.pdf" style="font-size: 16px;">ISO 26.000
+         Responsabilidad Social</a><b><span lang="ES" style="font-family: Verdana; font-size: 16px;"></span></b></p>
+         
+        </div><p class="MsoNormal"><span lang="ES" style="font-family: Verdana; color: rgb(255, 255, 255); font-size: 16px;">Estandarizacion de la compañia que busca:</span></p><p class="MsoNormal"></p><ul><li><span style="font-family: Verdana; font-size: 16px;"><span lang="ES" style="color: rgb(255, 255, 255);">Ayudar a las organizaciones a abordar su
+         Responsabilidad Social.</span></span></li><li><span style="font-family: Verdana; font-size: 16px;"><span lang="ES" style="color: rgb(255, 255, 255);">Proporcionar una guía práctica tendiente a hacer
+         operativa la Responsabilidad Social.</span></span></li><li><span style="font-family: Verdana; font-size: 16px;"><span lang="ES" style="color: rgb(255, 255, 255);"></span><span style="color: rgb(255, 255, 255);">Dar énfasis a los resultados de desempeño y a su
+         mejor</span></span></li><li><span style="font-family: Verdana; font-size: 16px;"><span style="color: rgb(255, 255, 255);"></span><span style="line-height: 12px; color: rgb(255, 255, 255);">Aumentar la confianza y
+         satisfacción de los clientes y otros stakeholders en las organizaciones</span></span></li></ul><p></p><p><br></p>
+    </div><div class="art-layout-cell layout-item-3" style="width: 50%" >
+        <p><img width="392" height="254" alt="" class="art-lightbox" src="images/iso.png"><br></p>
+    </div>
+    </div>
+</div>
+</div>
+<div class="art-content-layout-wrapper layout-item-0">
+<div class="art-content-layout layout-item-1">
+    <div class="art-content-layout-row">
+    <div class="art-layout-cell layout-item-2" style="width: 50%" >
+        <p><span style="font-weight: bold;">PROGRAMA RES:</span></p><p><span lang="ES" style="line-height: 115%; font-size: 16px; font-family: Verdana;">Nuestro modelo está conformado por seis pilares de Responsabilidad
+         Social que agrupa las variables económicas, sociales y ambientales. Este modelo
+         responde a las necesidades de los grupos de interés con los interactúa en la
+         compañía.</span><br></p><p><span style="font-family: Verdana; font-size: 16px; line-height: 18px;"><br></span></p><p><span style="font-family: Verdana; font-size: 16px; line-height: 18px; font-weight: bold;">2 GRANDES PILARES</span></p><p><span style="font-family: Verdana; font-size: 16px; line-height: 18px; text-decoration: underline;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></p>
+    </div><div class="art-layout-cell layout-item-3" style="width: 50%" >
+        <p><img width="407" height="205" alt="" class="art-lightbox" src="images/RSE.png"><br></p>
+    </div>
+    </div>
+</div>
+</div>
+<div class="art-content-layout-wrapper layout-item-0">
+<div class="art-content-layout layout-item-1">
+    <div class="art-content-layout-row">
+    <div class="art-layout-cell layout-item-2" style="width: 50%" >
+        <p><span style="font-weight: bold;">MEJORAMIENTO DE CALIDAD DE VIDA:</span></p><p><span lang="ES" style="line-height: 115%; font-family: Verdana; color: rgb(255, 255, 255); font-size: 16px;">Retribuir a la Sociedad mejores personas a través del ofrecimiento de un
+         trabajo digno, que desarrolle su talento y mejore su calidad de vida.</span><span style="font-weight: bold;"><br></span></p><p class="MsoNormal" style="margin-bottom: 0.0001pt;"><i><span lang="ES" style="font-family: Verdana; color: rgb(255, 255, 255); font-size: 16px;">Objetivos:</span></i></p>
+         
+        <p class="MsoNormal" style="margin-bottom: 0.0001pt;"></p><ul><li><span style="font-family: Verdana; font-size: 16px;">Impulsar el desarrollo
+         integral del empleado y su familia, promoviendo actividades con objetivo
+         pedagógico, manteniendo aquellas que incentiven mejoras en la calidad de
+         relaciones.</span><br></li><li><span style="font-family: Verdana; font-size: 16px;">Fortalecer los
+         vínculos entre los colaboradores con el fin de fomentar las relaciones humanas,
+         el &nbsp;trabajo en equipo y la participación.</span><br></li><li><span style="font-family: Verdana; font-size: 16px;">Mantener un estado
+         mental positivo en nuestros colaboradores y sus familias, con un alto sentido
+         de pertenencia hacia la empresa por parte de ellos.</span><br></li></ul><p></p><p><span lang="ES" style="line-height: 115%; font-family: Verdana; color: rgb(255, 255, 255); font-size: 16px;"><br></span></p>
+    </div><div class="art-layout-cell layout-item-2" style="width: 50%" >
+        <p><span style="font-weight: bold;">CONTRIBUCION A LA COMUNIDAD:</span></p><p><span lang="ES" style="line-height: 115%; font-family: Verdana; font-size: 16px; color: #FFFFFF;">Generar crecimiento, progreso y desarrollo a la sociedad que contribuya
+         a la construcción de un mejor país.</span><span style="font-weight: bold;"><br></span></p><p><span style="font-family: Verdana; font-size: 16px; line-height: 18px;">Por medio de programas como:</span></p><ul><li><span style="font-family: Verdana; font-size: 16px; line-height: 18px;">Donaciones de vueltas.</span></li><li><span style="font-size: 16px;">Donaciones en especie y dinero.</span></li><li><span style="font-size: 16px;">Programa voluntariado - Soy voluntario&nbsp;</span><span style="font-size: 16px;">Sodimac.</span></li><li><span style="font-size: 16px;">S.O.S Solideraio.</span></li></ul><p>
+        </p>
+		
+    </div>
+    </div>
+</div>
+</div>
+<div class="art-content-layout-wrapper layout-item-0">
+<div class="art-content-layout layout-item-1">
+    <div class="art-content-layout-row">
+    <div class="art-layout-cell layout-item-4" style="width: 100%" >
+        <p></p><div id="techo" style="position: relative; display: inline-block; z-index: 0; margin: 0px;  border-width: 0px;  " class="art-collage">
+<div class="art-slider art-slidecontainertecho" data-width="700" data-height="500">
+    <div class="art-slider-inner">
+<div class="art-slide-item art-slidetecho0">
+
+</div>
+<div class="art-slide-item art-slidetecho1">
+
+</div>
+
+    </div>
+</div>
+<div class="art-slidenavigator art-slidenavigatortecho" data-left="93.71">
+<a href="#" class="art-slidenavigatoritem"></a><a href="#" class="art-slidenavigatoritem"></a>
+</div>
+
+
+
+    </div>
+
+        
+         
+         
+        <p><br></p>
+    </div>
+    </div>
+</div>
+</div>
+<div class="art-content-layout-wrapper layout-item-0">
+<div class="art-content-layout layout-item-5">
+    <div class="art-content-layout-row">
+    <div class="art-layout-cell layout-item-6" style="width: 100%" >
+        <p class="MsoNormal"><span lang="ES" style="font-family: Verdana; font-size: 16px; color: #FFFFFF;">TECHO nació en Chile en 1997, tiene presencia en 19 países de Latinoamércia
+         y en Colombia está presente desde 2006. Su gran objetivo es la superación de la
+         pobreza y lograr un desarrollo sostenible en las comunidades que interviene,
+         haciendo partícipes a todos los sectores de la sociedad, a través de diferentes
+         programas que promueven el desarrollo comunitario:</span></p>
+         
+        <p class="MsoNormal"><span lang="ES" style="font-family: Verdana; font-size: 16px; color: #FFFFFF;">- Construcción de viviendas de emergencia.<br>
+         - Fomento productivo y emprendimiento.<br>
+         - Capacitación en oficios técnicos.<br>
+         - Asistencia jurídica.<br>
+         - Entre algunos más.</span></p>
+         
+         <span lang="ES" style="line-height: 115%; font-family: Verdana; font-size: 16px; color: #FFFFFF;">Como organización también
+         trabajamos en conjunto con TECHO en Perú y Chile.</span><p class="MsoNormal"><span lang="ES" style="font-family: Verdana; font-size: 16px; text-decoration: underline;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></p><p class="MsoNormal"><span lang="ES" style="font-family: Verdana; font-size: 16px;">Dentro del programa "Soy voluntario Sodimac" ofrecemos cuatro modalidades para que los voluntarios
+         puedan vincularse de acuerdo a sus intereses y afinidades:</span></p>
+         
+        <p class="MsoNormal"></p><ul><li><span style="font-family: Verdana; font-size: 16px;">Reparación locativas de escuelas públicas.&nbsp;</span></li><li><span style="font-size: 16px;"><span style="font-family: Verdana;"></span><span style="font-family: Verdana;">Adecuación de viviendas,
+         colegios y jardines, eliminando barreras de acceso para que las personas en
+         condición de discapacidad puedan acceder.</span></span></li><li><span style="font-size: 16px;"><span style="font-family: Verdana;"></span><span style="font-family: Verdana;">Soluciones temporales de vivienda.</span></span></li><li><span style="font-size: 16px;"><span style="font-family: Verdana;"></span><span style="font-family: Verdana;">Jornadas ambientales de siembre de árboles.</span></span></li></ul><p></p><p><br></p>
+		 <p><a href="politicaambiental.html" class="art-button"><- Anterior</a></p><p> 
+    </div>
+    </div>
+</div>
+</div>
+<div class="art-content-layout-wrapper layout-item-0">
+<div class="art-content-layout layout-item-1">
+    <div class="art-content-layout-row">
+    <div class="art-layout-cell layout-item-2" style="width: 50%" >
+        <p><br></p>
+    </div><div class="art-layout-cell layout-item-2" style="width: 50%" >
+        <p><br></p>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+                                
+                
+
+</article></div>
+                    </div>
+                </div>
+            </div>
+    </div>
+<footer class="art-footer">
+  <div class="art-footer-inner">
+<div class="art-content-layout">
+    <div class="art-content-layout-row">
+    <div class="art-layout-cell layout-item-0" style="width: 20%">
+        <p style="font: 22px 'Arial Narrow';"><a href="contacto.html" style="font-size: 20px;">CONTACTENOS</a><span style="font-size: 20px;"><a href="/contactenos"></a></span><span style="color: rgb(115, 127, 5); font-size: 28px;"></span></p><div style="margin-left: 2em"></div>
+    </div><div class="art-layout-cell layout-item-0" style="width: 20%">
+        <div style="margin-left: 2em"></div>
+    </div><div class="art-layout-cell layout-item-0" style="width: 24%">
+        <p style="font: 22px 'Arial Narrow';"><br></p><div style="margin-left: 2em"></div>
+    </div><div class="art-layout-cell layout-item-0" style="width: 36%">
+        <p style="text-align: right;"><a href="https://twitter.com/Homecenter_co"><img width="32" height="32" alt="" src="images/twitter_32.png" class=""></a><a href="https://www.facebook.com/homecentercolombia"><img width="32" height="32" alt="" src="images/facebook_32-2.png" style="margin-right: 5px;" class=""></a></p><p style="text-align: right;">Siguenos en nuestras redes sociales</p>
+    </div>
+    </div>
+</div>
+
+    <p class="art-page-footer">
+        <span id="art-footnote-links">Designed by HCResponsable .</span>
+    </p>
+  </div>
+</footer>
+
+</div>
+
+
+</body></html>
